@@ -1009,19 +1009,19 @@
   left:0px;
   top:0px;
   width:32px;
-  height:24px;
+  height:28px;
 }
 #u75 {
   position:absolute;
   left:14px;
-  top:459px;
+  top:455px;
   width:32px;
-  height:24px;
+  height:28px;
 }
 #u76 {
   position:absolute;
   left:2px;
-  top:4px;
+  top:6px;
   width:28px;
   visibility:hidden;
   word-wrap:break-word;
@@ -2227,7 +2227,7 @@
 }
 #u174 {
   position:absolute;
-  left:-6px;
+  left:-2px;
   top:448px;
   width:63px;
   height:61px;

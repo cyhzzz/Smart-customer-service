@@ -51,9 +51,11 @@
 .label {
   font-size:14px;
   text-align:left;
+  line-height:20px;
 }
 ._文本段落 {
   text-align:left;
+  line-height:20px;
 }
 .line {
 }

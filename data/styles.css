@@ -12,7 +12,6 @@
 .ellipse {
 }
 ._图片 {
-  color:#000000;
 }
 ._一级标题 {
   font-family:'Arial Normal', 'Arial';
@@ -117,4 +116,7 @@
   color:#169BD5;
 }
 ._连接线 {
+}
+._图片2 {
+  color:#000000;
 }

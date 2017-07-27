@@ -87,7 +87,8 @@
 
             $(window).bind('load', function() {
                 if(CHROME_5_LOCAL && !$('body').attr('pluginDetected')) {
-                    window.location = 'resources/chrome/chrome.html';
+                    //window.location = 'resources/chrome/chrome.html';
+					window.alert("使用Chrome内核存在问题，请切换兼容模式或用IE浏览器打开");
                 }
             });
 

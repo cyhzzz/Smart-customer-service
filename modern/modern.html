@@ -12,6 +12,8 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
             font-size: 14px;
+            overscroll-behavior-y: contain;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* 移动端标准尺寸 */
@@ -111,7 +113,7 @@
 <body class="bg-gray-50 text-gray-900 antialiased">
 
     <!-- 主容器 - 移动端视口模拟 -->
-    <div id="app" class="max-w-[375px] mx-auto min-h-screen bg-gray-50 relative overflow-hidden shadow-2xl">
+    <div id="app" class="max-w-[375px] mx-auto min-h-screen bg-gray-50 relative overflow-hidden shadow-2xl" style="overscroll-behavior-y: contain;">
 
         <!-- ==================== 首页：智能客服中心 ==================== -->
         <div id="page-home" class="page active pb-24">
@@ -165,8 +167,8 @@
 
             <!-- 快捷功能区 -->
             <section class="px-3 mb-3">
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-                    <div class="grid grid-cols-5 gap-3">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3">
+                    <div class="grid grid-cols-5 gap-2">
                         <!-- 功能项 1 -->
                         <button class="flex flex-col items-center gap-2 btn-active group">
                             <div class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">

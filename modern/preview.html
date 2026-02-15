@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能客服 - 移动端原型预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .preview-container {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 主题切换器 - 在样机外部 */
+    .theme-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 12px;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.8s ease-in-out 0.5s both;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .theme-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-btn {
+      padding: 8px 20px;
+      border: 2px solid #E5E7EB;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+      color: #6B7280;
+    }
+
+    .theme-btn:hover {
+      border-color: #C7162E;
+      color: #C7162E;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(199, 22, 46, 0.2);
+    }
+
+    .theme-btn.active {
+      background: linear-gradient(135deg, #C7162E 0%, #E63946 100%);
+      border-color: #C7162E;
+      color: white;
+      box-shadow: 0 4px 12px rgba(199, 22, 46, 0.3);
+    }
+
+    .theme-btn.active:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 手机模拟器外壳 */
+    .phone-frame {
+      position: relative;
+      width: 375px;
+      height: 812px;
+      background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
+      border-radius: 40px;
+      padding: 20px;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+      animation: phoneFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes phoneFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 30px;
+      background: #1a1a1a;
+      border-radius: 0 0 20px 20px;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .phone-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 功能标注面板 */
+    .annotations-panel {
+      width: 420px;
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.8s ease-in-out 0.3s both;
+    }
+
+    .panel-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(135deg, #C7162E 0%, #E63946 100%) 1;
+    }
+
+    .annotation-item {
+      margin-bottom: 20px;
+      padding: 18px;
+      background: linear-gradient(135deg, #f7f8fa 0%, #ffffff 100%);
+      border-radius: 12px;
+      border-left: 4px solid #C7162E;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .annotation-item:hover {
+      background: linear-gradient(135deg, #eef0f5 0%, #f7f8fa 100%);
+      transform: translateX(8px);
+      box-shadow: 0 4px 12px rgba(199, 22, 46, 0.15);
+    }
+
+    .annotation-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .annotation-desc {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+    .annotation-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, #C7162E 0%, #E63946 100%);
+      color: white;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(199, 22, 46, 0.2);
+    }
+
+    .tech-stack {
+      margin-top: 24px;
+      padding: 18px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 12px;
+      color: white;
+    }
+
+    .tech-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #f7f8fa;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-badge {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 1200px) {
+      .preview-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .phone-frame {
+        width: 320px;
+        height: 640px;
+      }
+
+      .annotations-panel {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .theme-controls {
+        top: 10px;
+        right: 10px;
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 主题切换器 - 在样机外部 -->
+  <div class="theme-controls">
+    <div class="theme-label">🎨 主题切换：</div>
+    <button class="theme-btn active" onclick="switchTheme('legacy')">原始样式</button>
+    <button class="theme-btn" onclick="switchTheme('modern')">现代风格</button>
+  </div>
+
+  <div class="preview-container">
+    <!-- 手机模拟器 -->
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <iframe id="prototype-frame" src="http://localhost:5173/"></iframe>
+      </div>
+    </div>
+
+    <!-- 功能标注面板 -->
+    <div class="annotations-panel">
+      <h2 class="panel-title">📱 功能区块说明</h2>
+
+      <div class="annotation-item">
+        <div class="annotation-title">🏦 Logo区</div>
+        <div class="annotation-desc">顶部品牌标识区域，包含智能客服Logo和副标题</div>
+        <span class="annotation-tag">品牌展示</span>
+      </div>
+
+      <div class="annotation-item">
+        <div class="annotation-title">📢 公告栏</div>
+        <div class="annotation-desc">公告栏，显示最新公告信息</div>
+        <span class="annotation-tag">信息通知</span>
+      </div>
+
+      <div class="annotation-item">
+        <div class="annotation-title">🎯 宫格区</div>
+        <div class="annotation-desc">5个快捷操作按钮（网点查询、开户行查询、转账进度、账户管理费、更多），点击"更多"可展开更多功能</div>
+        <span class="annotation-tag">快捷入口</span>
+      </div>
+
+      <div class="annotation-item">
+        <div class="annotation-title">我关心的</div>
+        <div class="annotation-desc">基于客服中心客户进线大数据统计，左右布局展示分类和常见问题，包含5个分类：转账、贷款、交易、基金、理财</div>
+        <span class="annotation-tag">智能推荐</span>
+      </div>
+
+      <div class="annotation-item">
+        <div class="annotation-title">💬 智能咨询栏</div>
+        <div class="annotation-desc">底部吸顶对话框，支持文本和语音输入，机器人承接后可转人工客服，24小时在线服务</div>
+        <span class="annotation-tag">智能客服</span>
+      </div>
+
+      <div class="tech-stack">
+        <div class="tech-title">🛠️ 技术栈</div>
+        <div class="tech-list">
+          <span class="tech-badge">Vite</span>
+          <span class="tech-badge">Tailwind CSS v4</span>
+          <span class="tech-badge">iOS Design</span>
+          <span class="tech-badge">玻璃拟态</span>
+          <span class="tech-badge">CSS Animations</span>
+          <span class="tech-badge">响应式设计</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTheme(theme) {
+      const iframe = document.getElementById('prototype-frame');
+
+      if (theme === 'modern') {
+        iframe.src = 'modern.html';
+      } else {
+        iframe.src = 'http://localhost:5173/';
+      }
+
+      // 更新按钮状态
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      console.log(`主题已切换为: ${theme}`);
+    }
+  </script>
+</body>
+</html>

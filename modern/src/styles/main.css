@@ -1,0 +1,480 @@
+/**
+ * 智能客服 - iOS风格现代设计
+ * 基于"小招客服demo"设计风格
+ */
+
+/* 引入原始样式 */
+@import './theme-legacy.css';
+
+/* ========== CSS Variables ========== */
+:root {
+  /* iOS风格配色 - 红色系 */
+  --primary: #ef4444;
+  --primary-dark: #dc2626;
+  --primary-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+
+  /* 辅助色 */
+  --blue: #3b82f6;
+  --green: #10b981;
+  --orange: #f59e0b;
+  --purple: #8b5cf6;
+
+  /* 文字颜色 */
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-light: #9ca3af;
+
+  /* 背景色 */
+  --bg-primary: #f9fafb;
+  --bg-white: #ffffff;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* iOS弹簧动画 */
+  --transition-ios: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: 0.15s var(--transition-ios);
+  --transition-base: 0.3s var(--transition-ios);
+}
+
+/* ========== 全局样式 ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  max-width: 100%;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== 1. 顶部Logo区 ========== */
+.header {
+  background: linear-gradient(to bottom, rgba(239, 246, 255, 0.5), rgba(249, 250, 251, 0));
+  padding: 20px 20px 24px;
+}
+
+.header-content {
+  max-width: 100%;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 10px 25px -5px rgba(96, 165, 250, 0.3);
+}
+
+.logo-text {
+  flex: 1;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.logo-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* ========== 2. 公告栏（改为活动横幅） ========== */
+.announcement {
+  background: var(--primary-gradient);
+  padding: 16px 20px;
+  margin: 0 20px 24px;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.3);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.announcement:active {
+  transform: scale(0.98);
+}
+
+.announcement::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZ2LTRoLTJ2NGgyem0tNiA2di00aC0ydjRoMnptMC02di00aC0ydjRoMnpNMjQgMzR2LTRoLTJ2NGgyem0wLTZ2LTRoLTJ2NGgyem0tNiA2di00aC0ydjRoMnptMC02di00aC0ydjRoMnoiLz48L2c+PC9nPjwvc3ZnPg==') repeat;
+  opacity: 0.3;
+}
+
+.announcement-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.announcement-text {
+  flex: 1;
+  color: white;
+}
+
+.announcement-label {
+  display: inline-block;
+  background: #fbbf24;
+  color: #92400e;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-message {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.announcement-icon-wrapper {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-icon {
+  font-size: 48px;
+  opacity: 0.9;
+}
+
+/* ========== 3. 宫格区（改为5个图标） ========== */
+.quick-actions {
+  padding: 0 16px 24px;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  background: white;
+  padding: 16px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(229, 231, 235, 1);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.action-btn:active {
+  transform: scale(0.96);
+}
+
+.action-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:nth-child(1) .action-icon-wrapper { background: #fef2f2; }
+.action-btn:nth-child(2) .action-icon-wrapper { background: #fff7ed; }
+.action-btn:nth-child(3) .action-icon-wrapper { background: #eff6ff; }
+.action-btn:nth-child(4) .action-icon-wrapper { background: #f0fdf4; }
+.action-btn:nth-child(5) .action-icon-wrapper { background: #faf5ff; }
+
+.action-btn:hover .action-icon-wrapper {
+  filter: brightness(0.95);
+}
+
+.action-icon {
+  filter: none;
+}
+
+.action-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ========== 4. 我关心的（改为"小助手猜您想问"） ========== */
+.concerns {
+  padding: 0 16px 24px;
+}
+
+.section-header {
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.section-line {
+  display: none;
+}
+
+.concerns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.concern-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(229, 231, 235, 1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  animation: none;
+}
+
+.concern-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.concern-left {
+  display: none;
+}
+
+.concern-right {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.concern-item {
+  display: none;
+}
+
+.concern-item:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.concern-item::before {
+  display: none;
+}
+
+.concern-item:last-child {
+  display: none;
+}
+
+.item-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.item-arrow {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+/* ========== 5. 底部吸底咨询栏（玻璃拟态） ========== */
+.chat-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(229, 231, 235, 1);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.chat-content {
+  max-width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.voice-btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 20px;
+  transition: transform var(--transition-base);
+  flex-shrink: 0;
+}
+
+.voice-btn:active {
+  transform: scale(0.96);
+}
+
+.voice-icon {
+  filter: none;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 10px 16px;
+  background: #f3f4f6;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.chat-input::placeholder {
+  color: var(--text-light);
+}
+
+.chat-input:focus {
+  background: white;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.send-btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 24px;
+  transition: transform var(--transition-base);
+  flex-shrink: 0;
+}
+
+.send-btn:active {
+  transform: scale(0.96);
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 375px) {
+  .actions-grid {
+    gap: 12px;
+  }
+
+  .action-icon-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .action-icon {
+    font-size: 22px;
+  }
+
+  .action-label {
+    font-size: 11px;
+  }
+}
+
+/* ========== 主题切换器（隐藏，由样机外部控制） ========== */
+.theme-switcher {
+  display: none;
+}
+
+/* ========== 滚动条隐藏 ========== */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

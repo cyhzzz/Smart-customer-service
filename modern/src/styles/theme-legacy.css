@@ -1,0 +1,256 @@
+/**
+ * Legacy Theme - 原始Axure原型样式
+ * 保持与原始原型一模一样的外观
+ */
+
+.theme-legacy {
+  background-color: #f5f5f5;
+}
+
+/* ========== 顶部Logo区 ========== */
+.theme-legacy .header {
+  background: #C7162E;
+  padding: 15px 0;
+  box-shadow: none;
+}
+
+.theme-legacy .logo-icon {
+  background: #fff;
+  box-shadow: none;
+  animation: none;
+}
+
+.theme-legacy .logo-title {
+  color: #fff;
+  font-size: 20px;
+}
+
+.theme-legacy .logo-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========== 公告栏 ========== */
+.theme-legacy .announcement {
+  background: #FFF3CD;
+  border-bottom: 1px solid #D39E00;
+}
+
+.theme-legacy .announcement-icon-wrapper {
+  background: #D39E00;
+  animation: none;
+}
+
+.theme-legacy .announcement-label {
+  background: #D39E00;
+}
+
+.theme-legacy .announcement-message {
+  color: #856404;
+}
+
+/* ========== 宫格区 ========== */
+.theme-legacy .quick-actions {
+  background: #fff;
+  margin-top: 10px;
+  padding: 15px 10px;
+}
+
+.theme-legacy .actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.theme-legacy .action-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px 5px;
+}
+
+.theme-legacy .action-btn::before {
+  display: none;
+}
+
+.theme-legacy .action-btn:hover {
+  background: #f5f5f5;
+  transform: none;
+  box-shadow: none;
+  border-color: #ccc;
+}
+
+.theme-legacy .action-icon {
+  font-size: 32px;
+  filter: none;
+  animation: none;
+}
+
+.theme-legacy .action-btn:hover .action-icon {
+  transform: none;
+}
+
+.theme-legacy .action-label {
+  font-size: 12px;
+  color: #333;
+}
+
+/* ========== 我关心的 ========== */
+.theme-legacy .concerns {
+  background: #fff;
+  margin-top: 10px;
+  padding: 15px 10px;
+}
+
+.theme-legacy .section-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.theme-legacy .section-line {
+  display: none;
+}
+
+.theme-legacy .concerns-list {
+  gap: 10px;
+}
+
+.theme-legacy .concern-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: none;
+  animation: none;
+  overflow: hidden;
+}
+
+.theme-legacy .concern-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.theme-legacy .concern-left {
+  background: #E8EEF4;
+  padding: 12px 8px;
+  border-bottom: 1px solid #ddd;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.theme-legacy .concern-icon {
+  font-size: 24px;
+  filter: none;
+}
+
+.theme-legacy .concern-category {
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+}
+
+.theme-legacy .concern-right {
+  padding: 8px 0;
+}
+
+.theme-legacy .concern-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.theme-legacy .concern-item::before {
+  display: none;
+}
+
+.theme-legacy .concern-item:hover {
+  background: #fafafa;
+}
+
+.theme-legacy .item-text {
+  font-size: 13px;
+  color: #666;
+}
+
+.theme-legacy .item-arrow {
+  color: #999;
+  font-size: 16px;
+}
+
+.theme-legacy .concern-item:hover .item-arrow {
+  color: #999;
+  transform: none;
+}
+
+/* ========== 底部咨询栏 ========== */
+.theme-legacy .chat-bar {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.theme-legacy .voice-btn {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+.theme-legacy .voice-btn:hover {
+  background: #f0f0f0;
+  transform: none;
+}
+
+.theme-legacy .voice-icon {
+  font-size: 18px;
+}
+
+.theme-legacy .chat-input {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.theme-legacy .chat-input:focus {
+  background: #fff;
+  border-color: #C7162E;
+  box-shadow: none;
+}
+
+.theme-legacy .send-btn {
+  background: #C7162E;
+  border-radius: 20px;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+.theme-legacy .send-btn:hover {
+  background: #a01226;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ========== 移除所有现代动画和效果 ========== */
+.theme-legacy * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.theme-legacy .header {
+  backdrop-filter: none;
+  background: #C7162E;
+}
+
+.theme-legacy .chat-bar {
+  backdrop-filter: none;
+  background: #fff;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 375px) {
+  .theme-legacy .logo-title {
+    font-size: 18px;
+  }
+
+  .theme-legacy .action-icon {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-modern">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="智能客服 - 您的专属金融助手">
+  <title>智能客服</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 1. 顶部Logo区 -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo-wrapper">
+          <div class="logo-icon">🤖</div>
+          <div class="logo-text">
+            <h1 class="logo-title">Hi，</h1>
+            <p class="logo-subtitle">我是小助手 ~</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. 活动横幅 -->
+    <section class="announcement">
+      <div class="announcement-content">
+        <div class="announcement-text">
+          <button class="announcement-label">点此参与</button>
+          <div class="announcement-message">马上有金，支付有礼</div>
+        </div>
+        <div class="announcement-icon-wrapper">
+          <span class="announcement-icon">🎁</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 快捷功能区（5个图标） -->
+    <section class="quick-actions">
+      <div class="actions-grid">
+        <button class="action-btn">
+          <div class="action-icon-wrapper">
+            <span class="action-icon">💳</span>
+          </div>
+          <div class="action-label">卡号查询</div>
+        </button>
+        <button class="action-btn">
+          <div class="action-icon-wrapper">
+            <span class="action-icon">🏦</span>
+          </div>
+          <div class="action-label">开户行查询</div>
+        </button>
+        <button class="action-btn">
+          <div class="action-icon-wrapper">
+            <span class="action-icon">⚠️</span>
+          </div>
+          <div class="action-label">咨询与投诉</div>
+        </button>
+        <button class="action-btn">
+          <div class="action-icon-wrapper">
+            <span class="action-icon">💰</span>
+          </div>
+          <div class="action-label">查询余额</div>
+        </button>
+        <button class="action-btn">
+          <div class="action-icon-wrapper">
+            <span class="action-icon">👤</span>
+          </div>
+          <div class="action-label">账户管理</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. 小助手猜您想问 -->
+    <section class="concerns">
+      <div class="section-header">
+        <h2 class="section-title">小助手猜您想问 ~</h2>
+      </div>
+
+      <div class="concerns-list">
+        <!-- 我的转账 -->
+        <div class="concern-card">
+          <div class="concern-right">
+            <div class="concern-item">
+              <span class="item-text">一次性信用修复政策</span>
+              <span class="item-arrow">›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 我的贷款 -->
+        <div class="concern-card">
+          <div class="concern-right">
+            <div class="concern-item">
+              <span class="item-text">周三5折</span>
+              <span class="item-arrow">›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 我的交易 -->
+        <div class="concern-card">
+          <div class="concern-right">
+            <div class="concern-item">
+              <span class="item-text">星巴克笔笔立减，达标领好礼</span>
+              <span class="item-arrow">›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 我的基金 -->
+        <div class="concern-card">
+          <div class="concern-right">
+            <div class="concern-item">
+              <span class="item-text">如何查询13个月前的交易明细？</span>
+              <span class="item-arrow">›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 我的理财 -->
+        <div class="concern-card">
+          <div class="concern-right">
+            <div class="concern-item">
+              <span class="item-text">对最近的交易有疑问？</span>
+              <span class="item-arrow">›</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 底部吸底咨询栏 -->
+    <footer class="chat-bar">
+      <div class="chat-content">
+        <button class="voice-btn">
+          <span>🎤</span>
+        </button>
+        <input
+          type="text"
+          class="chat-input"
+          placeholder="欢迎向小助手提问~"
+        />
+        <button class="send-btn">➕</button>
+        <button class="send-btn">📱</button>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

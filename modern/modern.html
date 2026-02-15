@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智能客服 - 现代化原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* iOS 系统字体栈 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 隐藏滚动条但保持滚动功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* iOS 风格弹簧动画 */
+        .ios-spring {
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* 页面切换动画 */
+        .page {
+            display: none;
+            animation: fadeIn 0.25s ease-out;
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 玻璃拟态效果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* 渐变文字 */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 按钮点击效果 */
+        .btn-active:active {
+            transform: scale(0.96);
+            opacity: 0.9;
+        }
+
+        /* 卡片悬停效果 */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 输入框焦点样式 */
+        .ios-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* 安全区域适配 */
+        .safe-area-top {
+            padding-top: env(safe-area-inset-top);
+        }
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- 主容器 - 移动端视口模拟 -->
+    <div id="app" class="max-w-md mx-auto min-h-screen bg-gray-50 relative overflow-hidden shadow-2xl">
+
+        <!-- ==================== 首页：智能客服中心 ==================== -->
+        <div id="page-home" class="page active pb-24">
+
+            <!-- 状态栏区域 -->
+            <div class="safe-area-top bg-gradient-to-b from-blue-50 to-gray-50 px-4 pt-2 pb-4">
+                <div class="flex justify-between items-center text-xs text-gray-600 font-medium">
+                    <span>19:31</span>
+                    <div class="flex items-center gap-1">
+                        <span>5G</span>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <span class="ml-1">62%</span>
+                        <i class="fas fa-battery-three-quarters"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 头部区域 -->
+            <header class="px-5 pt-2 pb-6 bg-gradient-to-b from-blue-50/50 to-transparent">
+                <!-- 返回按钮（可选） -->
+                <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200/50 transition-colors mb-4 btn-active">
+                    <i class="fas fa-chevron-left text-gray-700 text-lg"></i>
+                </button>
+
+                <!-- 欢迎语 -->
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center shadow-lg shadow-blue-200">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">智能客服</h1>
+                        <p class="text-lg text-gray-600">您的专属金融助手</p>
+                    </div>
+                </div>
+
+                <!-- 公告横幅 -->
+                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-yellow-400 to-orange-400 shadow-lg shadow-orange-200 btn-active cursor-pointer group">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZ2LTRoLTJ2NGgyem0tNiA2di00aC0ydjRoMnptMC02di00aC0ydjRoMnpNMjQgMzR2LTRoLTJ2NGgyem0wLTZ2LTRoLTJ2NGgyem0tNiA2di00aC0ydjRoMnptMC02di00aC0ydjRoMnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+                    <div class="relative px-5 py-4 flex justify-between items-center">
+                        <div class="text-white">
+                            <h3 class="text-lg font-bold mb-1">📢 公告</h3>
+                            <p class="text-sm">关于对长期未使用且余额为零的个人账户进行自动销户的公告</p>
+                        </div>
+                        <div class="text-5xl opacity-90">
+                            <i class="fas fa-bullhorn text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 快捷功能区 -->
+            <section class="px-4 mb-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+                    <div class="grid grid-cols-5 gap-4">
+                        <!-- 功能项 1 -->
+                        <button class="flex flex-col items-center gap-2 btn-active group">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
+                                <i class="far fa-credit-card text-red-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs text-gray-700 font-medium">网点查询</span>
+                        </button>
+
+                        <!-- 功能项 2 -->
+                        <button class="flex flex-col items-center gap-2 btn-active group">
+                            <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center group-hover:bg-orange-100 transition-colors">
+                                <i class="fas fa-university text-orange-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs text-gray-700 font-medium">开户行查询</span>
+                        </button>
+
+                        <!-- 功能项 3 -->
+                        <button class="flex flex-col items-center gap-2 btn-active group">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-clock text-blue-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs text-gray-700 font-medium">转账进度</span>
+                        </button>
+
+                        <!-- 功能项 4 -->
+                        <button class="flex flex-col items-center gap-2 btn-active group">
+                            <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
+                                <i class="fas fa-file-invoice-dollar text-green-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs text-gray-700 font-medium">账户管理费</span>
+                        </button>
+
+                        <!-- 功能项 5 -->
+                        <button class="flex flex-col items-center gap-2 btn-active group">
+                            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center group-hover:bg-purple-100 transition-colors">
+                                <i class="fas fa-ellipsis-h text-purple-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs text-gray-700 font-medium">更多</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 我关心的 -->
+            <section class="px-4 mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 px-1">我关心的</h2>
+                <div class="space-y-3">
+                    <!-- 我的转账 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex">
+                            <div class="bg-blue-50 p-4 flex flex-col items-center justify-center border-r border-gray-100">
+                                <i class="far fa-credit-card text-blue-500 text-2xl mb-2"></i>
+                                <span class="text-xs text-gray-700 font-medium">我的转账</span>
+                            </div>
+                            <div class="flex-1 p-2">
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">转账汇款到账时间？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">手机银行转账汇款手续费全免吗？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 我的贷款 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex">
+                            <div class="bg-orange-50 p-4 flex flex-col items-center justify-center border-r border-gray-100">
+                                <i class="fas fa-hand-holding-usd text-orange-500 text-2xl mb-2"></i>
+                                <span class="text-xs text-gray-700 font-medium">我的贷款</span>
+                            </div>
+                            <div class="flex-1 p-2">
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">"闪电贷"电核放款说明</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">"闪电贷"新系统平台上线</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 我的交易 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex">
+                            <div class="bg-green-50 p-4 flex flex-col items-center justify-center border-r border-gray-100">
+                                <i class="fas fa-chart-line text-green-500 text-2xl mb-2"></i>
+                                <span class="text-xs text-gray-700 font-medium">我的交易</span>
+                            </div>
+                            <div class="flex-1 p-2">
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">如何查询13个月前的交易明细？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">对最近的交易有疑问？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 我的基金 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex">
+                            <div class="bg-purple-50 p-4 flex flex-col items-center justify-center border-r border-gray-100">
+                                <i class="fas fa-chart-pie text-purple-500 text-2xl mb-2"></i>
+                                <span class="text-xs text-gray-700 font-medium">我的基金</span>
+                            </div>
+                            <div class="flex-1 p-2">
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">什么时候可以打印申购确认书？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">赎回资金的到账时间在哪里查询？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 我的理财 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex">
+                            <div class="bg-indigo-50 p-4 flex flex-col items-center justify-center border-r border-gray-100">
+                                <i class="fas fa-piggy-bank text-indigo-500 text-2xl mb-2"></i>
+                                <span class="text-xs text-gray-700 font-medium">我的理财</span>
+                            </div>
+                            <div class="flex-1 p-2">
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">哪些账户可以申请快易理财？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                                <button class="w-full p-3 flex justify-between items-center hover:bg-gray-50 transition-colors btn-active card-hover">
+                                    <span class="text-sm text-gray-700">快易理财转账如何办理？</span>
+                                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== 底部输入栏（固定定位） ==================== -->
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto glass border-t border-gray-200 safe-area-bottom z-40">
+            <div class="px-4 py-3 flex items-center gap-3">
+                <button class="w-10 h-10 flex items-center justify-center text-gray-500 btn-active">
+                    <i class="fas fa-microphone text-xl"></i>
+                </button>
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="找不到答案？向小招提问吧！" class="w-full bg-gray-100 rounded-full px-4 py-2.5 text-sm ios-input border border-transparent focus:bg-white transition-all">
+                </div>
+                <button class="px-6 py-2 bg-red-500 text-white font-bold rounded-full shadow-lg shadow-red-200 btn-active">
+                    发送
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

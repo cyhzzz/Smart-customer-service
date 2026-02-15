@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品原型 - 智能客服系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 苹果风格字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 苹果风格配色 */
+            --color-text-primary: #1d1d1f;
+            --color-text-secondary: #86868b;
+            --color-text-tertiary: #b8b8b8;
+            --color-bg-primary: #ffffff;
+            --color-bg-secondary: #f5f5f7;
+            --color-accent: #0071e3;
+            --color-accent-hover: #0077ed;
+            --color-border: rgba(0,0,0,0.1);
+            --color-shadow: rgba(0,0,0,0.04);
+            
+            /* 动画时长 */
+            --transition-fast: 0.2s;
+            --transition-normal: 0.4s;
+            --transition-slow: 0.6s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', sans-serif;
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        /* 顶部导航栏 - 苹果风格 */
+        .nav-apple {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 0.5px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all var(--transition-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-title {
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--color-text-primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-link {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            letter-spacing: -0.01em;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-text-primary);
+        }
+        
+        /* 主内容区域 */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 48px;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 80px;
+            min-height: calc(100vh - 52px);
+        }
+        
+        /* 样机外壳 - 现代大屏比例 */
+        .phone-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 112px;
+            height: fit-content;
+        }
+        
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 50px;
+            padding: 14px;
+            box-shadow: 
+                0 50px 100px -20px rgba(0, 0, 0, 0.25),
+                0 30px 60px -30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+        
+        .phone-frame::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #1a1a1a 40%, #2d2d2d 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 0 3px #1a1a1a,
+                90px 0 0 0 #1a1a1a;
+            z-index: 10;
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 38px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .phone-screen iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+        
+        /* 右侧内容区域 */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+            padding-top: 20px;
+        }
+        
+        /* 区块标题 */
+        .section-header {
+            margin-bottom: 32px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            color: var(--color-text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .section-subtitle {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            letter-spacing: -0.01em;
+            line-height: 1.5;
+        }
+        
+        /* 样式切换按钮 - 苹果风格 */
+        .switch-container {
+            background: var(--color-bg-primary);
+            padding: 24px 32px;
+            border-radius: 20px;
+            box-shadow: 
+                0 4px 12px var(--color-shadow),
+                0 0 0 0.5px var(--color-border);
+            transition: all var(--transition-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .switch-container:hover {
+            box-shadow: 
+                0 8px 24px var(--color-shadow),
+                0 0 0 0.5px var(--color-border);
+            transform: translateY(-2px);
+        }
+        
+        .switch-buttons {
+            display: flex;
+            gap: 12px;
+            background: var(--color-bg-secondary);
+            padding: 4px;
+            border-radius: 12px;
+        }
+        
+        .switch-btn {
+            flex: 1;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-fast) cubic-bezier(0.25, 0.1, 0.25, 1);
+            letter-spacing: -0.01em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .switch-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--color-bg-primary);
+            border-radius: 8px;
+            box-shadow: 
+                0 1px 3px rgba(0, 0, 0, 0.08),
+                0 0 0 0.5px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all var(--transition-fast) cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .switch-btn.active {
+            color: var(--color-text-primary);
+        }
+        
+        .switch-btn.active::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .switch-btn span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .switch-btn:not(.active):hover {
+            color: var(--color-text-primary);
+        }
+        
+        /* 设计思路 - 苹果卡片风格 */
+        .design-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .step-card {
+            background: var(--color-bg-primary);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 
+                0 4px 12px var(--color-shadow),
+                0 0 0 0.5px var(--color-border);
+            transition: all var(--transition-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-accent) 0%, #00c7be 100%);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .step-card:hover {
+            box-shadow: 
+                0 8px 24px var(--color-shadow),
+                0 0 0 0.5px var(--color-border);
+            transform: translateY(-4px);
+        }
+        
+        .step-card:hover::before {
+            opacity: 1;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        
+        .step-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            letter-spacing: -0.01em;
+        }
+        
+        .step-list {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .step-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        .step-list-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+        
+        /* 产品上线效果 - 苹果网格 */
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .effect-card {
+            background: var(--color-bg-primary);
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 
+                0 4px 12px var(--color-shadow),
+                0 0 0 0.5px var(--color-border);
+            transition: all var(--transition-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .effect-card:hover {
+            box-shadow: 
+                0 8px 24px var(--color-shadow),
+                0 0 0 0.5px var(--color-border);
+            transform: translateY(-4px);
+        }
+        
+        .effect-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #00c7be 0%, #00a99d 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .effect-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+        
+        .effect-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--color-text-secondary);
+            letter-spacing: -0.01em;
+        }
+        
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-text-tertiary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-text-secondary);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 350px 1fr;
+                gap: 60px;
+                padding: 40px;
+            }
+            
+            .phone-frame {
+                width: 350px;
+                height: 758px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .phone-container {
+                position: relative;
+                top: 0;
+            }
+            
+            .phone-frame {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 顶部导航栏 -->
+    <nav class="nav-apple">
+        <div class="nav-content">
+            <div class="nav-title">产品原型</div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">关于</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        
+        <!-- 左侧：样机区域 -->
+        <div class="phone-container animate-in">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <iframe id="prototype-frame" src="modern.html"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧：设计说明区域 -->
+        <div class="content-area">
+            
+            <!-- 样式切换 -->
+            <section class="animate-in delay-1">
+                <div class="switch-container">
+                    <div class="switch-buttons">
+                        <button onclick="switchStyle('modern')" id="btn-modern" class="switch-btn active">
+                            <span>
+                                <i class="fas fa-magic"></i>
+                                现代样式
+                            </span>
+                        </button>
+                        <button onclick="switchStyle('legacy')" id="btn-legacy" class="switch-btn">
+                            <span>
+                                <i class="fas fa-history"></i>
+                                原始样式
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 设计思路 -->
+            <section class="animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">设计思路</h2>
+                    <p class="section-subtitle">基于行业调研和数据分析的产品设计方法</p>
+                </div>
+                
+                <div class="design-steps">
+                    <!-- 步骤1 -->
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">行业调研</h3>
+                        <p class="step-description">
+                            调研行业主流智能客服产品交互设计和推荐问情况，分析最佳实践案例，形成详细的调研报告，为产品设计提供行业基准参考。
+                        </p>
+                    </div>
+                    
+                    <!-- 步骤2 -->
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">大数据分析</h3>
+                        <p class="step-description">
+                            深入调研公司客服中心实际的客户咨询进行情况，通过大数据分析挖掘高频咨询场景和痛点，识别可功能化的需求点。
+                        </p>
+                    </div>
+                    
+                    <!-- 步骤3 -->
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">功能设计</h3>
+                        <div class="step-list">
+                            <div class="step-list-item">
+                                <strong>宫格功能：</strong>将可功能化的高频需求开发为新功能快捷入口
+                            </div>
+                            <div class="step-list-item">
+                                <strong>我关心的：</strong>零散热点问题按类别划分展示，提供个性化推荐
+                            </div>
+                            <div class="step-list-item">
+                                <strong>自助工具：</strong>常用功能自助化，减少人工咨询压力
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 产品上线效果 -->
+            <section class="animate-in delay-3">
+                <div class="section-header">
+                    <h2 class="section-title">产品上线效果</h2>
+                    <p class="section-subtitle">实际业务价值与客户体验提升</p>
+                </div>
+                
+                <div class="effects-grid">
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h4 class="effect-title">行业跟进</h4>
+                        <p class="effect-description">卡号查询等功能通过合规审核，获行业跟进</p>
+                    </div>
+                    
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="effect-title">咨询减少</h4>
+                        <p class="effect-description">客服进线涉及已上线功能的咨询显著减少</p>
+                    </div>
+                    
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="effect-title">体验提升</h4>
+                        <p class="effect-description">提升零售客户服务咨询体验</p>
+                    </div>
+                    
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4 class="effect-title">降本增效</h4>
+                        <p class="effect-description">助力客服中心降本增效效果明显</p>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+        
+    </main>
+    
+    <script>
+        // 样式切换功能
+        function switchStyle(style) {
+            const frame = document.getElementById('prototype-frame');
+            const btnModern = document.getElementById('btn-modern');
+            const btnLegacy = document.getElementById('btn-legacy');
+            
+            if (style === 'modern') {
+                frame.src = 'modern.html';
+                btnModern.classList.add('active');
+                btnLegacy.classList.remove('active');
+            } else {
+                frame.src = '../index.html';
+                btnModern.classList.remove('active');
+                btnLegacy.classList.add('active');
+            }
+        }
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

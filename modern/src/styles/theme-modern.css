@@ -1,0 +1,162 @@
+/**
+ * Modern Theme - 现代化样式
+ * 使用Tailwind CSS构建，移动优先，响应式设计
+ */
+
+@import "tailwindcss";
+
+.theme-modern {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* 现代化的组件样式 */
+.theme-modern .container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .theme-modern .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-modern .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.theme-modern .card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.theme-modern .btn {
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.theme-modern .btn:hover {
+  background-color: #1d4ed8;
+}
+
+.theme-modern .input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+}
+
+.theme-modern .input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 响应式排版 */
+.theme-modern h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .theme-modern h1 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-modern h1 {
+    font-size: 3rem;
+  }
+}
+
+.theme-modern h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .theme-modern h2 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-modern h2 {
+    font-size: 2.25rem;
+  }
+}
+
+.theme-modern h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .theme-modern h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-modern h3 {
+    font-size: 1.875rem;
+  }
+}
+
+.theme-modern p {
+  font-size: 1rem;
+  color: #374151;
+}
+
+@media (min-width: 640px) {
+  .theme-modern p {
+    font-size: 1.125rem;
+  }
+}
+
+/* 响应式布局 */
+.theme-modern .grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .theme-modern .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-modern .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .theme-modern .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.theme-modern .flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 更多现代样式将在这里添加 */

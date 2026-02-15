@@ -626,18 +626,24 @@
     </main>
 
     <script>
+        // 当前样式状态
+        let currentStyle = 'modern';
+
         // 样式切换功能
         function switchStyle(style) {
             const frame = document.getElementById('prototype-frame');
             const btnModern = document.getElementById('btn-modern');
             const btnLegacy = document.getElementById('btn-legacy');
 
+            currentStyle = style;
+
             if (style === 'modern') {
                 frame.src = 'modern/modern.html';
                 btnModern.classList.add('active');
                 btnLegacy.classList.remove('active');
             } else {
-                frame.src = 'modern/demo.html';
+                // 原始样式：使用根目录的智能客服首页
+                frame.src = '智能客服首页.html';
                 btnModern.classList.remove('active');
                 btnLegacy.classList.add('active');
             }

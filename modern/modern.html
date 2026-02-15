@@ -81,103 +81,97 @@
         <!-- ==================== 首页：智能客服中心 ==================== -->
         <div id="page-home" class="page active pb-20">
             
-            <!-- 公告栏：活动横幅 -->
-            <section class="px-4 pt-4 pb-3">
-                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-500 to-red-600 shadow-lg shadow-red-200 btn-active cursor-pointer group">
-                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZ2LTRoLTJ2NGgyem0tNiA2di00aC0ydjRoMnptMC02di00aC0ydjRoMnpNMjQgMzR2LTRoLTJ2NGgyem0wLTZ2LTRoLTJ2NGgyem0tNiA2di00aC0ydjRoMnptMC02di00aC0ydjRoMnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
-                    <div class="relative px-5 py-4 flex justify-between items-center">
-                        <div class="text-white">
-                            <h3 class="text-lg font-bold mb-1">马上有金，支付有礼</h3>
-                            <button class="mt-2 px-4 py-1.5 bg-yellow-300 text-red-700 text-sm font-bold rounded-full shadow-md group-hover:scale-105 transition-transform">
-                                点此参与
-                            </button>
-                        </div>
-                        <div class="text-5xl opacity-90">
-                            <i class="fas fa-gift text-yellow-200"></i>
+            <!-- 公告栏：单行文本滚动 -->
+            <section class="px-4 pt-3 pb-2">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 px-3 py-2 flex items-center gap-2">
+                    <i class="fas fa-volume-up text-red-500 text-sm"></i>
+                    <div class="flex-1 overflow-hidden">
+                        <div class="text-sm text-gray-700 whitespace-nowrap">
+                            <span class="font-medium">公告：</span>马上有金，支付有礼活动进行中，点击查看详情 >>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- 宫格区：5个功能图标横排 -->
-            <section class="px-4 mb-6">
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-                    <div class="grid grid-cols-5 gap-4">
+            <section class="px-4 mb-4">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3">
+                    <div class="grid grid-cols-5 gap-3">
                         <!-- 功能项 1 -->
-                        <button onclick="showToast('正在加载卡号查询...')" class="flex flex-col items-center gap-2 btn-active group">
-                            <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
-                                <i class="far fa-credit-card text-red-500 text-xl"></i>
+                        <button onclick="showToast('正在加载卡号查询...')" class="flex flex-col items-center gap-1.5 btn-active group">
+                            <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
+                                <i class="far fa-credit-card text-red-500 text-lg"></i>
                             </div>
-                            <span class="text-xs text-gray-700 font-medium">卡号查询</span>
+                            <span class="text-xs text-gray-700 font-medium" style="font-size: 11px;">卡号查询</span>
                         </button>
                         
                         <!-- 功能项 2 -->
-                        <button onclick="showToast('正在加载开户行查询...')" class="flex flex-col items-center gap-2 btn-active group">
-                            <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center group-hover:bg-orange-100 transition-colors">
-                                <i class="fas fa-university text-orange-500 text-xl"></i>
+                        <button onclick="showToast('正在加载开户行查询...')" class="flex flex-col items-center gap-1.5 btn-active group">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center group-hover:bg-orange-100 transition-colors">
+                                <i class="fas fa-university text-orange-500 text-lg"></i>
                             </div>
-                            <span class="text-xs text-gray-700 font-medium">开户行查询</span>
+                            <span class="text-xs text-gray-700 font-medium" style="font-size: 11px;">开户行查询</span>
                         </button>
                         
                         <!-- 功能项 3 -->
-                        <button onclick="showToast('正在加载咨询与投诉...')" class="flex flex-col items-center gap-2 btn-active group">
-                            <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                                <i class="fas fa-exclamation-triangle text-blue-500 text-xl"></i>
+                        <button onclick="showToast('正在加载咨询与投诉...')" class="flex flex-col items-center gap-1.5 btn-active group">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-exclamation-triangle text-blue-500 text-lg"></i>
                             </div>
-                            <span class="text-xs text-gray-700 font-medium">咨询与投诉</span>
+                            <span class="text-xs text-gray-700 font-medium" style="font-size: 11px;">咨询与投诉</span>
                         </button>
                         
                         <!-- 功能项 4 -->
-                        <button onclick="showToast('正在加载查询余额...')" class="flex flex-col items-center gap-2 btn-active group">
-                            <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
-                                <i class="fas fa-yen-sign text-green-500 text-xl"></i>
+                        <button onclick="showToast('正在加载查询余额...')" class="flex flex-col items-center gap-1.5 btn-active group">
+                            <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
+                                <i class="fas fa-yen-sign text-green-500 text-lg"></i>
                             </div>
-                            <span class="text-xs text-gray-700 font-medium">查询余额</span>
+                            <span class="text-xs text-gray-700 font-medium" style="font-size: 11px;">查询余额</span>
                         </button>
                         
                         <!-- 功能项 5 -->
-                        <button onclick="showToast('正在加载账户管理...')" class="flex flex-col items-center gap-2 btn-active group">
-                            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center group-hover:bg-purple-100 transition-colors">
-                                <i class="fas fa-user-circle text-purple-500 text-xl"></i>
+                        <button onclick="showToast('正在加载账户管理...')" class="flex flex-col items-center gap-1.5 btn-active group">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center group-hover:bg-purple-100 transition-colors">
+                                <i class="fas fa-user-circle text-purple-500 text-lg"></i>
                             </div>
-                            <span class="text-xs text-gray-700 font-medium">账户管理</span>
+                            <span class="text-xs text-gray-700 font-medium" style="font-size: 11px;">账户管理</span>
                         </button>
                     </div>
                 </div>
             </section>
 
             <!-- 常见问题列表区：猜你想问 -->
-            <section class="px-4 mb-6">
-                <h2 class="text-lg font-bold text-gray-800 mb-4 px-1">猜您想问 ~</h2>
-                <div class="space-y-3">
+            <section class="px-4 mb-4">
+                <h2 class="text-base font-bold text-gray-800 mb-3 px-1" style="font-size: 15px;">猜您想问 ~</h2>
+                <div class="space-y-2">
                     <!-- 问题项 1 -->
-                    <button onclick="showToast('正在加载信用修复政策...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">一次性信用修复政策</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                    <button onclick="showToast('正在加载信用修复政策...')" class="w-full bg-white rounded-lg p-3 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
+                        <span class="text-gray-800 font-medium" style="font-size: 13px;">一次性信用修复政策</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
                     </button>
                     
                     <!-- 问题项 2 -->
-                    <button onclick="showToast('正在加载周三优惠活动...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">周三5折</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                    <button onclick="showToast('正在加载周三优惠活动...')" class="w-full bg-white rounded-lg p-3 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
+                        <span class="text-gray-800 font-medium" style="font-size: 13px;">周三5折</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
                     </button>
                     
                     <!-- 问题项 3 -->
-                    <button onclick="showToast('正在加载星巴克活动详情...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">星巴克笔笔立减，达标领好礼</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                    <button onclick="showToast('正在加载星巴克活动详情...')" class="w-full bg-white rounded-lg p-3 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
+                        <span class="text-gray-800 font-medium" style="font-size: 13px;">星巴克笔笔立减，达标领好礼</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
                     </button>
                     
                     <!-- 问题项 4 -->
-                    <button onclick="showToast('正在加载分期详情...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">账单分期，灵活还款</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                    <button onclick="showToast('正在加载分期详情...')" class="w-full bg-white rounded-lg p-3 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
+                        <span class="text-gray-800 font-medium" style="font-size: 13px;">账单分期，灵活还款</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
                     </button>
                     
                     <!-- 问题项 5 -->
-                    <button onclick="showToast('正在加载积分兑换...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">积分兑换，好礼不停</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                    <button onclick="showToast('正在加载积分兑换...')" class="w-full bg-white rounded-lg p-3 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
+                        <span class="text-gray-800 font-medium" style="font-size: 13px;">积分兑换，好礼不停</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
                     </button>
                 </div>
             </section>
@@ -186,18 +180,18 @@
 
         <!-- ==================== 底部输入栏（固定定位） ==================== -->
         <div class="fixed bottom-0 left-0 right-0 max-w-[375px] mx-auto glass border-t border-gray-200 safe-area-bottom z-40">
-            <div class="px-4 py-3 flex items-center gap-3">
-                <button class="w-10 h-10 flex items-center justify-center text-gray-500 btn-active">
-                    <i class="fas fa-microphone text-xl"></i>
+            <div class="px-3 py-2.5 flex items-center gap-2">
+                <button class="w-9 h-9 flex items-center justify-center text-gray-500 btn-active">
+                    <i class="fas fa-microphone text-lg"></i>
                 </button>
                 <div class="flex-1 relative">
-                    <input type="text" placeholder="欢迎向小助手提问~" class="w-full bg-gray-100 rounded-full px-4 py-2.5 text-sm ios-input border border-transparent focus:bg-white transition-all">
+                    <input type="text" placeholder="欢迎向小助手提问~" class="w-full bg-gray-100 rounded-full px-3 py-2 text-xs ios-input border border-transparent focus:bg-white transition-all" style="font-size: 12px;">
                 </div>
-                <button class="w-10 h-10 flex items-center justify-center text-gray-600 btn-active">
-                    <i class="fas fa-plus-circle text-2xl"></i>
+                <button class="w-9 h-9 flex items-center justify-center text-gray-600 btn-active">
+                    <i class="fas fa-plus-circle text-xl"></i>
                 </button>
-                <button class="w-10 h-10 flex items-center justify-center text-gray-600 btn-active">
-                    <i class="fas fa-th-large text-xl"></i>
+                <button class="w-9 h-9 flex items-center justify-center text-gray-600 btn-active">
+                    <i class="fas fa-th-large text-lg"></i>
                 </button>
             </div>
         </div>

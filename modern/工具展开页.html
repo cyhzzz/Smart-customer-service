@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具展开页 - 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
+        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
+        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
+        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
+        .subtitle { color: var(--color-text-secondary); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); }
+        .tool-card { background: var(--color-bg-secondary); padding: var(--spacing-2xl); border-radius: var(--radius-xl); text-align: center; transition: all var(--transition-normal); cursor: pointer; text-decoration: none; color: var(--color-text-primary); }
+        .tool-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .tool-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--color-accent) 0%, #00c7be 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 24px; }
+        .tool-name { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); }
+        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
+        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
+    </style>
+</head>
+<body>
+
+    <div class="container animate-fadeIn">
+        <a href="modern.html" class="btn-back"><i class="fas fa-arrow-left"></i> 返回首页</a>
+
+        <div class="header">
+            <h1 class="title">更多工具</h1>
+            <p class="subtitle">便捷的自助服务</p>
+        </div>
+
+        <div class="grid">
+            <a href="开户行查询.html" class="tool-card">
+                <div class="tool-icon"><i class="fas fa-university"></i></div>
+                <div class="tool-name">开户行查询</div>
+            </a>
+
+            <a href="账户管理费.html" class="tool-card">
+                <div class="tool-icon"><i class="fas fa-calculator"></i></div>
+                <div class="tool-name">账户管理费</div>
+            </a>
+
+            <a href="答案页面.html" class="tool-card">
+                <div class="tool-icon"><i class="fas fa-sync-alt"></i></div>
+                <div class="tool-name">转账进度</div>
+            </a>
+
+            <a href="答案页面.html" class="tool-card">
+                <div class="tool-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="tool-name">网点查询</div>
+            </a>
+
+            <a href="自助申请.html" class="tool-card">
+                <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="tool-name">自助申请</div>
+            </a>
+
+            <a href="答案页面.html" class="tool-card">
+                <div class="tool-icon"><i class="fas fa-bell"></i></div>
+                <div class="tool-name">动账通知</div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

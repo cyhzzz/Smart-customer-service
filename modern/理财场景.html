@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>理财场景 - 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: var(--color-bg-secondary);
+            min-height: 100vh;
+            padding: var(--spacing-2xl);
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-content {
+            padding: var(--spacing-3xl);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .btn-back:hover {
+            background: var(--color-bg-tertiary);
+            transform: translateX(-4px);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .product-card {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-name {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-primary);
+        }
+
+        .product-rate {
+            color: #e74c3c;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-info {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn-buy:hover {
+            background: var(--color-accent-hover);
+        }
+
+        .faq-section {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-text-primary);
+        }
+
+        .faq-item {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .faq-item a {
+            text-decoration: none;
+            color: var(--color-text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item:hover {
+            transform: translateX(4px);
+        }
+
+        .faq-item i {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container animate-fadeIn">
+        <div class="page-header">
+            <h1 class="page-title">理财服务</h1>
+            <p class="page-subtitle">稳健投资，财富增值</p>
+        </div>
+
+        <div class="page-content">
+            <a href="modern.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                返回首页
+            </a>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-name">稳健型理财A款</div>
+                    <div class="product-rate">年化收益 3.5%</div>
+                    <div class="product-info">
+                        投资期限：90天<br>
+                        起购金额：5万元<br>
+                        风险等级：低风险
+                    </div>
+                    <button class="btn-buy">立即购买</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">平衡型理财B款</div>
+                    <div class="product-rate">年化收益 4.2%</div>
+                    <div class="product-info">
+                        投资期限：180天<br>
+                        起购金额：10万元<br>
+                        风险等级：中低风险
+                    </div>
+                    <button class="btn-buy">立即购买</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">进取型理财C款</div>
+                    <div class="product-rate">年化收益 5.0%</div>
+                    <div class="product-info">
+                        投资期限：365天<br>
+                        起购金额：20万元<br>
+                        风险等级：中风险
+                    </div>
+                    <button class="btn-buy">立即购买</button>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2 class="section-title">常见问题</h2>
+
+                <div class="faq-item">
+                    <a href="答案页面.html">
+                        <span>哪些账户可以申请快易理财？</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="faq-item">
+                    <a href="答案页面.html">
+                        <span>快易理财转账如何办理？</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="faq-item">
+                    <a href="小招理财顾问.html">
+                        <span>咨询理财顾问</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

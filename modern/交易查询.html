@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>交易查询 - 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: var(--color-bg-secondary);
+            min-height: 100vh;
+            padding: var(--spacing-2xl);
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-subtitle {
+            font-size: var(--font-size-base);
+            opacity: 0.9;
+        }
+
+        .page-content {
+            padding: var(--spacing-3xl);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-text-primary);
+        }
+
+        .query-form {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-size: var(--font-size-base);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: white;
+            transition: all var(--transition-fast);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px var(--color-accent-light);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .btn {
+            flex: 1;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-bg-tertiary);
+        }
+
+        .result-card {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .result-item {
+            padding: var(--spacing-lg);
+            background: white;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .result-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-label {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .result-value {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-base);
+        }
+
+        .result-amount {
+            color: #e74c3c;
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-lg);
+        }
+
+        .help-links {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .help-link {
+            display: block;
+            padding: var(--spacing-lg);
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-primary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .help-link:hover {
+            background: var(--color-bg-tertiary);
+            transform: translateX(4px);
+        }
+
+        .help-link i {
+            color: var(--color-accent);
+            margin-right: var(--spacing-sm);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container animate-fadeIn">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <h1 class="page-title">交易查询</h1>
+            <p class="page-subtitle">查询您的交易明细</p>
+        </div>
+
+        <!-- 页面内容 -->
+        <div class="page-content">
+            <!-- 查询表单 -->
+            <div class="section">
+                <h2 class="section-title">查询条件</h2>
+                <div class="query-form">
+                    <div class="form-group">
+                        <label class="form-label">账户类型</label>
+                        <select class="form-input">
+                            <option>全部账户</option>
+                            <option>储蓄账户</option>
+                            <option>信用卡账户</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">查询时间段</label>
+                        <select class="form-input">
+                            <option>最近7天</option>
+                            <option>最近30天</option>
+                            <option>最近3个月</option>
+                            <option>最近13个月</option>
+                            <option>更早的交易</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="modern.html" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                            返回
+                        </a>
+                        <button class="btn btn-primary" onclick="queryTransactions()">
+                            <i class="fas fa-search"></i>
+                            查询
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 查询结果 -->
+            <div class="section" id="resultSection" style="display: none;">
+                <h2 class="section-title">查询结果</h2>
+                <div class="result-card">
+                    <div class="result-item">
+                        <div class="result-row">
+                            <span class="result-label">交易时间</span>
+                            <span class="result-value">2026-02-15 10:30:25</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">交易类型</span>
+                            <span class="result-value">转账支出</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">交易金额</span>
+                            <span class="result-amount">-￥1,234.56</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">对方账户</span>
+                            <span class="result-value">张三（****5678）</span>
+                        </div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-row">
+                            <span class="result-label">交易时间</span>
+                            <span class="result-value">2026-02-14 14:20:10</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">交易类型</span>
+                            <span class="result-value">POS消费</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">交易金额</span>
+                            <span class="result-amount">-￥500.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">商户名称</span>
+                            <span class="result-value">某超市</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 帮助链接 -->
+            <div class="help-links">
+                <h3 class="section-title">需要帮助？</h3>
+                <a href="交易存疑.html" class="help-link">
+                    <i class="fas fa-question-circle"></i>
+                    对最近的交易有疑问？
+                </a>
+                <a href="答案页面.html" class="help-link">
+                    <i class="fas fa-info-circle"></i>
+                    如何查询13个月前的交易明细？
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function queryTransactions() {
+            const resultSection = document.getElementById('resultSection');
+            resultSection.style.display = 'block';
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>

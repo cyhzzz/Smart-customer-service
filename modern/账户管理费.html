@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户管理费 - 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
+        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
+        .header { text-align: center; margin-bottom: var(--spacing-3xl); padding-bottom: var(--spacing-2xl); border-bottom: 1px solid var(--color-border); }
+        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
+        .subtitle { color: var(--color-text-secondary); }
+        .fee-table { width: 100%; border-collapse: collapse; margin-bottom: var(--spacing-3xl); }
+        .fee-table th, .fee-table td { padding: var(--spacing-lg); text-align: left; border-bottom: 1px solid var(--color-border); }
+        .fee-table th { background: var(--color-bg-secondary); font-weight: var(--font-weight-semibold); }
+        .fee-table tr:hover { background: var(--color-bg-tertiary); }
+        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
+        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
+        .tips { background: #fff3cd; padding: var(--spacing-xl); border-radius: var(--radius-xl); border-left: 4px solid #ffc107; }
+        .tips-title { font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm); color: #856404; }
+        .tips-content { color: #856404; line-height: var(--line-height-relaxed); }
+    </style>
+</head>
+<body>
+
+    <div class="container animate-fadeIn">
+        <a href="modern.html" class="btn-back"><i class="fas fa-arrow-left"></i> 返回首页</a>
+
+        <div class="header">
+            <h1 class="title">账户管理费</h1>
+            <p class="subtitle">账户收费标准说明</p>
+        </div>
+
+        <table class="fee-table">
+            <thead>
+                <tr>
+                    <th>账户类型</th>
+                    <th>月管理费</th>
+                    <th>减免条件</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>普通账户</td>
+                    <td>￥3/月</td>
+                    <td>日均存款≥1000元</td>
+                </tr>
+                <tr>
+                    <td>金卡账户</td>
+                    <td>￥10/月</td>
+                    <td>日均存款≥50000元</td>
+                </tr>
+                <tr>
+                    <td>白金账户</td>
+                    <td>￥20/月</td>
+                    <td>日均存款≥200000元</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tips">
+            <div class="tips-title"><i class="fas fa-lightbulb"></i> 小贴士</div>
+            <div class="tips-content">
+                • 符合减免条件的账户，系统自动减免管理费<br>
+                • 可通过手机银行查询账户余额和费用明细<br>
+                • 如有疑问，请联系客户经理或拨打客服热线
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>个贷场景（贷前）- 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: var(--color-bg-secondary);
+            min-height: 100vh;
+            padding: var(--spacing-2xl);
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-content {
+            padding: var(--spacing-3xl);
+        }
+
+        .loan-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .loan-card {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            border: 2px solid transparent;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .loan-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .loan-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .loan-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #00c7be 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: var(--spacing-md);
+        }
+
+        .loan-name {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+        }
+
+        .loan-rate {
+            color: #e74c3c;
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .loan-desc {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: var(--spacing-lg);
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn-action:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .faq-section {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+        }
+
+        .faq-item {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-item:hover {
+            transform: translateX(4px);
+        }
+
+        .faq-item a {
+            text-decoration: none;
+            color: var(--color-text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item i {
+            color: var(--color-accent);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .btn-back:hover {
+            background: var(--color-bg-tertiary);
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container animate-fadeIn">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <h1 class="page-title">个贷服务</h1>
+            <p class="page-subtitle">贷款申请前咨询</p>
+        </div>
+
+        <!-- 页面内容 -->
+        <div class="page-content">
+            <a href="modern.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                返回首页
+            </a>
+
+            <!-- 贷款产品 -->
+            <div class="loan-types">
+                <div class="loan-card">
+                    <div class="loan-card-header">
+                        <div class="loan-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="loan-name">闪电贷</div>
+                    </div>
+                    <div class="loan-rate">年化利率 5.6% 起</div>
+                    <div class="loan-desc">
+                        最高可贷30万元<br>
+                        最快当天放款<br>
+                        无需抵押担保
+                    </div>
+                    <button class="btn-action" onclick="applyLoan('闪电贷')">
+                        立即申请
+                    </button>
+                </div>
+
+                <div class="loan-card">
+                    <div class="loan-card-header">
+                        <div class="loan-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="loan-name">住房贷款</div>
+                    </div>
+                    <div class="loan-rate">年化利率 4.1% 起</div>
+                    <div class="loan-desc">
+                        最高可贷房产价值70%<br>
+                        最长30年还款期<br>
+                        支持公积金组合贷
+                    </div>
+                    <button class="btn-action" onclick="applyLoan('住房贷款')">
+                        立即申请
+                    </button>
+                </div>
+
+                <div class="loan-card">
+                    <div class="loan-card-header">
+                        <div class="loan-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="loan-name">汽车贷款</div>
+                    </div>
+                    <div class="loan-rate">年化利率 4.5% 起</div>
+                    <div class="loan-desc">
+                        最高可贷车价80%<br>
+                        最长5年还款期<br>
+                        审批快速简便
+                    </div>
+                    <button class="btn-action" onclick="applyLoan('汽车贷款')">
+                        立即申请
+                    </button>
+                </div>
+            </div>
+
+            <!-- 常见问题 -->
+            <div class="faq-section">
+                <h2 class="section-title">常见问题</h2>
+
+                <div class="faq-item">
+                    <a href="答案页面.html">
+                        <span>贷款需要哪些资料？</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="faq-item">
+                    <a href="答案页面.html">
+                        <span>贷款审批需要多长时间？</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="faq-item">
+                    <a href="答案页面.html">
+                        <span>"闪电贷"电核放款说明</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="faq-item">
+                    <a href="答案页面.html">
+                        <span>"闪电贷"新系统平台上线</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="faq-item">
+                    <a href="客户经理卡片.html">
+                        <span>咨询客户经理</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function applyLoan(type) {
+            alert('正在跳转到' + type + '申请页面...');
+            // 实际项目中应该跳转到对应的申请页面
+        }
+    </script>
+
+</body>
+</html>

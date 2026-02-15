@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>答案页面 - 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
+        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
+        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
+        .question { font-size: var(--font-size-2xl); font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-lg); color: var(--color-text-primary); }
+        .answer { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); color: var(--color-text-secondary); }
+        .answer p { margin-bottom: var(--spacing-lg); }
+        .answer ul { list-style: none; padding-left: var(--spacing-xl); }
+        .answer li::before { content: "•"; color: var(--color-accent); font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
+        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
+        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
+        .feedback { margin-top: var(--spacing-3xl); padding-top: var(--spacing-2xl); border-top: 1px solid var(--color-border); text-align: center; }
+        .feedback-title { font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-lg); }
+        .btn-group { display: flex; gap: var(--spacing-md); justify-content: center; }
+        .btn { padding: var(--spacing-md) var(--spacing-2xl); border: 1px solid var(--color-border); background: white; border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast); }
+        .btn:hover { background: var(--color-bg-secondary); }
+        .btn-helpful { border-color: var(--color-success); color: var(--color-success); }
+        .btn-helpful:hover { background: rgba(52, 199, 89, 0.1); }
+    </style>
+</head>
+<body>
+
+    <div class="container animate-fadeIn">
+        <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+
+        <div class="header">
+            <div class="question">转账汇款到账时间？</div>
+        </div>
+
+        <div class="answer">
+            <p>转账汇款的到账时间取决于转账方式和收款银行：</p>
+
+            <p><strong>1. 行内转账（本行账户间）</strong></p>
+            <ul>
+                <li>实时到账</li>
+            </ul>
+
+            <p><strong>2. 跨行转账</strong></p>
+            <ul>
+                <li><strong>小额转账（≤5万元）</strong>：实时到账</li>
+                <li><strong>大额转账（＞5万元）</strong>：工作日当天到账</li>
+            </ul>
+
+            <p><strong>3. 特别提示</strong></p>
+            <ul>
+                <li>节假日和夜间大额转账可能延迟到下一工作日</li>
+                <li>部分银行系统维护期间可能延迟到账</li>
+                <li>建议使用手机银行转账，手续费全免</li>
+            </ul>
+        </div>
+
+        <div class="feedback">
+            <div class="feedback-title">这个答案对您有帮助吗？</div>
+            <div class="btn-group">
+                <button class="btn btn-helpful" onclick="feedback('yes')">
+                    <i class="far fa-thumbs-up"></i> 有帮助
+                </button>
+                <button class="btn" onclick="feedback('no')">
+                    <i class="far fa-thumbs-down"></i> 没帮助
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function feedback(type) {
+            alert('感谢您的反馈！');
+        }
+    </script>
+
+</body>
+</html>

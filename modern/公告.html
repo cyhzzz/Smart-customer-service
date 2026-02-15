@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公告 - 智能客服</title>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: var(--color-bg-secondary);
+            min-height: 100vh;
+            padding: var(--spacing-2xl);
+        }
+
+        .announcement-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-3xl);
+        }
+
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-3xl);
+            padding-bottom: var(--spacing-2xl);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .announcement-title {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .announcement-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+
+        .announcement-content {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-primary);
+        }
+
+        .announcement-content h2 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin-top: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .announcement-content p {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .announcement-content ul {
+            list-style: none;
+            margin-bottom: var(--spacing-xl);
+            padding-left: var(--spacing-xl);
+        }
+
+        .announcement-content li::before {
+            content: "•";
+            color: var(--color-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .announcement-footer {
+            margin-top: var(--spacing-3xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-back:hover {
+            background: var(--color-bg-tertiary);
+            transform: translateX(-4px);
+        }
+
+        .btn-share {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--color-accent);
+            color: white;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-share:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-container animate-fadeIn">
+        <!-- 公告头部 -->
+        <div class="announcement-header">
+            <div>
+                <h1 class="announcement-title">重要公告</h1>
+                <div class="announcement-date">
+                    <i class="far fa-calendar-alt"></i> 2026年2月15日
+                </div>
+            </div>
+            <span class="badge badge-primary">重要</span>
+        </div>
+
+        <!-- 公告内容 -->
+        <div class="announcement-content">
+            <h2>尊敬的客户：</h2>
+
+            <p>
+                为了更好地为您提供服务，我们对智能客服系统进行了全面升级。以下是本次升级的主要内容：
+            </p>
+
+            <h2>一、功能优化</h2>
+            <ul>
+                <li>优化了智能推荐算法，提供更精准的问题解答</li>
+                <li>新增了语音输入功能，方便您快速提问</li>
+                <li>改进了搜索功能，支持模糊查询</li>
+                <li>优化了页面加载速度，提升使用体验</li>
+            </ul>
+
+            <h2>二、服务时间调整</h2>
+            <p>
+                自2026年3月1日起，我们的智能客服系统将提供<strong>7×24小时</strong>全天候服务。
+                如需人工服务，工作时间为：周一至周五 9:00-18:00。
+            </p>
+
+            <h2>三、新增功能</h2>
+            <ul>
+                <li>支持历史记录查询</li>
+                <li>支持收藏常用问题</li>
+                <li>支持一键转人工客服</li>
+                <li>支持评价反馈功能</li>
+            </ul>
+
+            <p>
+                如有任何疑问，请随时通过智能客服系统咨询，或拨打客服热线：400-XXX-XXXX。
+            </p>
+
+            <p>
+                感谢您对我们工作的支持！
+            </p>
+
+            <p style="text-align: right; margin-top: var(--spacing-3xl);">
+                <strong>某股份制银行客服中心</strong><br>
+                2026年2月15日
+            </p>
+        </div>
+
+        <!-- 公告底部 -->
+        <div class="announcement-footer">
+            <a href="modern.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                返回首页
+            </a>
+            <button class="btn-share" onclick="share()">
+                <i class="fas fa-share-alt"></i>
+                分享公告
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function share() {
+            alert('分享功能即将上线！');
+        }
+    </script>
+
+</body>
+</html>

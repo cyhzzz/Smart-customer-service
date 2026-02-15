@@ -320,17 +320,17 @@
         </div>
 
         <!-- ==================== 底部输入栏（固定定位） ==================== -->
-        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto glass border-t border-gray-200 safe-area-bottom z-40">
+        <div class="fixed bottom-0 left-0 right-0 max-w-[375px] mx-auto glass border-t border-gray-200 safe-area-bottom z-40" style="overscroll-behavior-y: contain;">
             <div class="px-3 py-3 flex items-center gap-3">
                 <button class="w-10 h-10 flex items-center justify-center text-gray-500 btn-active">
                     <i class="fas fa-microphone text-mobile-xl"></i>
-                </div>
+                </button>
                 <div class="flex-1 relative">
                     <input type="text" placeholder="找不到答案？向小招提问吧！" class="w-full bg-gray-100 rounded-full px-3 py-2.5 text-mobile-sm ios-input border border-transparent focus:bg-white transition-all">
                 </div>
-                <button class="px-6 py-2 bg-red-500 text-white font-bold rounded-full shadow-lg shadow-red-200 btn-active">
-                    发送
-                </div>
+                <button class="w-10 h-10 flex items-center justify-center text-gray-600 btn-active">
+                    <i class="fas fa-paper-plane text-mobile-xl"></i>
+                </button>
             </div>
         </div>
 

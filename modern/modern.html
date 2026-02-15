@@ -140,39 +140,69 @@
                 </div>
             </section>
 
-            <!-- 常见问题列表区：猜你想问 -->
-            <section class="px-4 mb-6">
-                <h2 class="text-lg font-bold text-gray-800 mb-4 px-1">猜您想问 ~</h2>
-                <div class="space-y-3">
-                    <!-- 问题项 1 -->
-                    <button onclick="showToast('正在加载信用修复政策...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">一次性信用修复政策</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
-                    </button>
-                    
-                    <!-- 问题项 2 -->
-                    <button onclick="showToast('正在加载周三优惠活动...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">周三5折</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
-                    </button>
-                    
-                    <!-- 问题项 3 -->
-                    <button onclick="showToast('正在加载星巴克活动详情...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">星巴克笔笔立减，达标领好礼</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
-                    </button>
-                    
-                    <!-- 问题项 4 -->
-                    <button onclick="showToast('正在加载分期详情...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">账单分期，灵活还款</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
-                    </button>
-                    
-                    <!-- 问题项 5 -->
-                    <button onclick="showToast('正在加载积分兑换...')" class="w-full bg-white rounded-xl p-4 flex justify-between items-center shadow-sm border border-gray-100 btn-active card-hover">
-                        <span class="text-gray-800 font-medium">积分兑换，好礼不停</span>
-                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
-                    </button>
+            <!-- 常见问题列表区：资讯卡片样式 -->
+            <section class="px-4 mb-4">
+                <!-- 我关心的 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-3 overflow-hidden">
+                    <div class="flex">
+                        <!-- 左侧分类 -->
+                        <div class="w-20 bg-red-50 flex items-center justify-center border-r border-gray-100">
+                            <span class="text-sm font-bold text-red-600">我关心的</span>
+                        </div>
+                        <!-- 右侧问题列表 -->
+                        <div class="flex-1 divide-y divide-gray-100">
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                我的转账
+                            </button>
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                "闪电贷"电核放款说明
+                            </button>
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                "闪电贷"新系统平台上线
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 基金业务 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-3 overflow-hidden">
+                    <div class="flex">
+                        <!-- 左侧分类 -->
+                        <div class="w-20 bg-blue-50 flex items-center justify-center border-r border-gray-100">
+                            <span class="text-sm font-bold text-blue-600">基金业务</span>
+                        </div>
+                        <!-- 右侧问题列表 -->
+                        <div class="flex-1 divide-y divide-gray-100">
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                什么时候可以打印申购确认书？
+                            </button>
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                赎回资金的到账时间在哪里查询？
+                            </button>
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                哪些账户可以申请快易理财？
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 账户管理 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="flex">
+                        <!-- 左侧分类 -->
+                        <div class="w-20 bg-green-50 flex items-center justify-center border-r border-gray-100">
+                            <span class="text-sm font-bold text-green-600">账户管理</span>
+                        </div>
+                        <!-- 右侧问题列表 -->
+                        <div class="flex-1 divide-y divide-gray-100">
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                快易理财转账如何办理？
+                            </button>
+                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 text-sm hover:bg-gray-50 transition-colors btn-active">
+                                转账汇款到账时间？
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 

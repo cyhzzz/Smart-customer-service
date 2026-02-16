@@ -2,44 +2,74 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>交易存疑 - 智能客服</title>
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
-        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
-        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
-        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
-        .content { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); color: var(--color-text-secondary); }
-        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
-        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
-        /* 移动端标准尺寸 */
-        .text-mobile-xs { font-size: 11px; }
-        .text-mobile-sm { font-size: 12px; }
-        .text-mobile-base { font-size: 13px; }
-        .text-mobile-lg { font-size: 14px; }
-            overscroll-behavior-y: contain;
-            -webkit-overflow-scrolling: touch;
-        .text-mobile-xl { font-size: 16px; }
-        .text-mobile-2xl { font-size: 18px; }
-
-        /* 移动端按钮标准高度 */
-        .btn-mobile {
-            height: 40px;
-            line-height: 40px;
-            min-height: 40px;
-        }
+        body { background: var(--color-bg-secondary); min-height: 100vh; padding: 0; }
+        .page-container { max-width: 375px; margin: 0 auto; background: white; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+        .header h1 { font-size: 18px; font-weight: 600; flex: 1; }
+        .btn-back { color: white; text-decoration: none; display: flex; align-items: center; gap: 4px; font-size: 14px; }
+        .content { padding: 20px; }
+        .info-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 24px; color: white; margin-bottom: 20px; }
+        .info-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+        .info-desc { font-size: 14px; line-height: 1.6; opacity: 0.95; }
+        .feature-list { margin-top: 24px; }
+        .feature-item { background: #f8f9fa; border-radius: 8px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+        .feature-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+        .feature-text h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .feature-text p { font-size: 12px; color: #666; }
+        .action-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="container animate-fadeIn">
-        <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+    <div class="page-container">
         <div class="header">
-            <h1 class="title">交易存疑</h1>
+            <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+            <h1>交易存疑</h1>
         </div>
         <div class="content">
-            <p>这是交易存疑页面的内容。该页面正在完善中...</p>
+            <div class="info-card">
+                <div class="info-title"><i class="fas fa-question-circle"></i> 交易存疑查询</div>
+                <div class="info-desc">您是否对某笔交易有疑问？我可以帮您查询和解答交易相关问题，包括交易明细、资金去向等。</div>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <div class="feature-text">
+                        <h3>查询交易明细</h3>
+                        <p>查看详细的交易记录和流水</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="feature-text">
+                        <h3>追踪资金去向</h3>
+                        <p>了解转账资金的具体流向</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-text">
+                        <h3>交易安全验证</h3>
+                        <p>确认可疑交易是否为本人操作</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <div class="feature-text">
+                        <h3>人工客服支持</h3>
+                        <p>如需进一步帮助可联系人工客服</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="action-btn" onclick="window.location.href='交易查询.html'">
+                <i class="fas fa-arrow-right"></i> 开始查询
+            </button>
         </div>
     </div>
 </body>

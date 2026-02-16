@@ -2,45 +2,347 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>开户行查询 - 智能客服</title>
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
-        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
-        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
-        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
-        .content { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); color: var(--color-text-secondary); }
-        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
-        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
-        /* 移动端标准尺寸 */
-        .text-mobile-xs { font-size: 11px; }
-        .text-mobile-sm { font-size: 12px; }
-        .text-mobile-base { font-size: 13px; }
-        .text-mobile-lg { font-size: 14px; }
-            overscroll-behavior-y: contain;
-            -webkit-overflow-scrolling: touch;
-        .text-mobile-xl { font-size: 16px; }
-        .text-mobile-2xl { font-size: 18px; }
+        body {
+            background: var(--color-bg-secondary);
+            min-height: 100vh;
+            padding: 0;
+        }
 
-        /* 移动端按钮标准高度 */
-        .btn-mobile {
-            height: 40px;
-            line-height: 40px;
-            min-height: 40px;
+        .query-container {
+            max-width: 375px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .btn-back {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .question-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .question-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .answer-section {
+            margin-bottom: 24px;
+        }
+
+        .answer-label {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .query-form {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-query {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-query:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .result-table.show {
+            display: table;
+        }
+
+        .result-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-table td:first-child {
+            font-weight: 600;
+            color: #666;
+            width: 80px;
+        }
+
+        .related-questions {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .question-item {
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .question-item:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .question-item i {
+            font-size: 12px;
+        }
+
+        .feedback-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .feedback-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .btn-feedback {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e8e8e8;
+            background: white;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-feedback:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .btn-feedback.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .ask-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 12px;
+            padding: 16px;
+            color: white;
+        }
+
+        .ask-input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 12px;
         }
     </style>
 </head>
 <body>
-    <div class="container animate-fadeIn">
-        <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+    <div class="query-container">
         <div class="header">
-            <h1 class="title">开户行查询</h1>
+            <a href="javascript:history.back()" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                返回
+            </a>
+            <h1>开户行查询</h1>
         </div>
+
         <div class="content">
-            <p>这是开户行查询页面的内容。该页面正在完善中...</p>
+            <div class="question-box">
+                <div class="question-label">您的问题</div>
+                <div class="question-text">我的开户行是在哪里？</div>
+            </div>
+
+            <div class="answer-section">
+                <div class="answer-label">解答</div>
+                <div class="query-form">
+                    <div class="form-group">
+                        <label class="form-label">请输入卡号</label>
+                        <input type="text" class="form-input" id="cardNumber" placeholder="请输入银行卡号">
+                    </div>
+                    <button class="btn-query" onclick="queryBank()">
+                        <i class="fas fa-search"></i> 查询
+                    </button>
+
+                    <table class="result-table" id="resultTable">
+                        <tr>
+                            <td>卡号</td>
+                            <td id="resultCard">**** **** **** 1234</td>
+                        </tr>
+                        <tr>
+                            <td>开户行</td>
+                            <td id="resultBank">招商银行北京分行</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="related-questions">
+                <div class="section-title">小招猜您还需要了解以下内容：</div>
+                <div class="question-item">
+                    <i class="fas fa-chevron-right"></i>
+                    查询行号？
+                </div>
+                <div class="question-item">
+                    <i class="fas fa-chevron-right"></i>
+                    如何查询网点位置？
+                </div>
+                <div class="question-item">
+                    <i class="fas fa-chevron-right"></i>
+                    开户行是否可以变更？
+                </div>
+                <div class="question-item">
+                    <i class="fas fa-chevron-right"></i>
+                    开户行信息有什么作用？
+                </div>
+            </div>
+
+            <div class="feedback-section">
+                <div class="section-title">以上内容对您有帮助吗？</div>
+                <div class="feedback-buttons">
+                    <button class="btn-feedback" onclick="giveFeedback('helpful')">
+                        <i class="far fa-thumbs-up"></i> 有帮助
+                    </button>
+                    <button class="btn-feedback" onclick="giveFeedback('nothelpful')">
+                        <i class="far fa-thumbs-down"></i> 没帮助
+                    </button>
+                </div>
+            </div>
+
+            <div class="ask-section">
+                <div class="section-title" style="color: white;">还有疑问？问问小招吧！</div>
+                <input type="text" class="ask-input" placeholder="请输入您的问题...">
+            </div>
         </div>
     </div>
+
+    <script>
+        function queryBank() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            if (cardNumber.length > 0) {
+                document.getElementById('resultCard').textContent = '**** **** **** ' + cardNumber.slice(-4);
+                document.getElementById('resultBank').textContent = '招商银行北京分行';
+                document.getElementById('resultTable').classList.add('show');
+            } else {
+                alert('请输入卡号');
+            }
+        }
+
+        function giveFeedback(type) {
+            const buttons = document.querySelectorAll('.btn-feedback');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (type === 'helpful') {
+                alert('感谢您的反馈！我们会继续努力提供更好的服务。');
+            } else {
+                alert('抱歉没有帮到您，我们会持续改进！');
+            }
+        }
+    </script>
 </body>
 </html>

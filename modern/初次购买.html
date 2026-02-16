@@ -2,44 +2,34 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>初次购买 - 智能客服</title>
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
-        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
-        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
-        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
-        .content { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); color: var(--color-text-secondary); }
-        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
-        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
-        /* 移动端标准尺寸 */
-        .text-mobile-xs { font-size: 11px; }
-        .text-mobile-sm { font-size: 12px; }
-        .text-mobile-base { font-size: 13px; }
-        .text-mobile-lg { font-size: 14px; }
-            overscroll-behavior-y: contain;
-            -webkit-overflow-scrolling: touch;
-        .text-mobile-xl { font-size: 16px; }
-        .text-mobile-2xl { font-size: 18px; }
-
-        /* 移动端按钮标准高度 */
-        .btn-mobile {
-            height: 40px;
-            line-height: 40px;
-            min-height: 40px;
-        }
+        body { background: var(--color-bg-secondary); min-height: 100vh; padding: 0; }
+        .container { max-width: 375px; margin: 0 auto; background: white; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+        .header h1 { font-size: 18px; font-weight: 600; flex: 1; }
+        .btn-back { color: white; text-decoration: none; display: flex; align-items: center; gap: 4px; font-size: 14px; }
+        .content { padding: 24px; text-align: center; }
+        .icon-circle { width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; color: white; }
+        .title { font-size: 24px; font-weight: 600; margin-bottom: 16px; color: #333; }
+        .description { font-size: 15px; line-height: 1.8; color: #666; margin-bottom: 32px; }
+        .btn-primary { display: inline-block; padding: 14px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }
     </style>
 </head>
 <body>
-    <div class="container animate-fadeIn">
-        <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+    <div class="container">
         <div class="header">
-            <h1 class="title">初次购买</h1>
+            <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+            <h1>初次购买</h1>
         </div>
         <div class="content">
-            <p>这是初次购买页面的内容。该页面正在完善中...</p>
+            <div class="icon-circle"><i class="fas fa-info-circle"></i></div>
+            <h2 class="title">初次购买</h2>
+            <p class="description">第一次购买理财产品？别担心，小招来帮您了解产品风险，选择适合您的理财方式。</p>
+            <a href="modern.html" class="btn-primary">返回首页</a>
         </div>
     </div>
 </body>

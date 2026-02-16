@@ -123,7 +123,7 @@
 
             <!-- 公告栏：跑马灯滚动 -->
             <section class="px-4 pt-2 pb-2">
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 px-3 py-2 flex items-center gap-2">
+                <div onclick="window.location.href='公告.html'" class="bg-white rounded-lg shadow-sm border border-gray-100 px-3 py-2 flex items-center gap-2 cursor-pointer">
                     <span class="text-sm font-bold text-red-600">公告|</span>
                     <div class="flex-1 overflow-hidden">
                         <div id="marquee" class="text-sm text-gray-700 whitespace-nowrap">
@@ -138,7 +138,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
                     <div class="grid grid-cols-5 gap-4">
                         <!-- 功能项 1 -->
-                        <button onclick="showToast('正在加载开户行查询...')" class="flex flex-col items-center gap-2 btn-active group">
+                        <button onclick="window.location.href='开户行查询.html'" class="flex flex-col items-center gap-2 btn-active group">
                             <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
                                 <i class="fas fa-university text-red-500 text-xl"></i>
                             </div>
@@ -146,7 +146,7 @@
                         </button>
 
                         <!-- 功能项 2 -->
-                        <button onclick="showToast('正在加载转账进度...')" class="flex flex-col items-center gap-2 btn-active group">
+                        <button onclick="window.location.href='答案页面.html'" class="flex flex-col items-center gap-2 btn-active group">
                             <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center group-hover:bg-orange-100 transition-colors">
                                 <i class="fas fa-exchange-alt text-orange-500 text-xl"></i>
                             </div>
@@ -154,7 +154,7 @@
                         </button>
 
                         <!-- 功能项 3 -->
-                        <button onclick="showToast('正在加载账户管理费...')" class="flex flex-col items-center gap-2 btn-active group">
+                        <button onclick="window.location.href='账户管理费.html'" class="flex flex-col items-center gap-2 btn-active group">
                             <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                                 <i class="fas fa-file-invoice-dollar text-blue-500 text-xl"></i>
                             </div>
@@ -162,7 +162,7 @@
                         </button>
 
                         <!-- 功能项 4 -->
-                        <button onclick="showToast('正在加载网点查询...')" class="flex flex-col items-center gap-2 btn-active group">
+                        <button onclick="window.location.href='答案页面.html'" class="flex flex-col items-center gap-2 btn-active group">
                             <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
                                 <i class="fas fa-map-marker-alt text-green-500 text-xl"></i>
                             </div>
@@ -170,7 +170,7 @@
                         </button>
 
                         <!-- 功能项 5 -->
-                        <button onclick="showToast('正在加载全部功能...')" class="flex flex-col items-center gap-2 btn-active group">
+                        <button onclick="window.location.href='工具展开页.html'" class="flex flex-col items-center gap-2 btn-active group">
                             <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center group-hover:bg-purple-100 transition-colors">
                                 <i class="fas fa-th-large text-purple-500 text-xl"></i>
                             </div>
@@ -191,11 +191,11 @@
                         </div>
                         <!-- 右侧问题列表 -->
                         <div class="flex-1 divide-y divide-gray-100">
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='交易存疑.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">对最近的交易有疑问？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='交易查询.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">如何查询13个月前的交易明细？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
@@ -212,11 +212,11 @@
                         </div>
                         <!-- 右侧问题列表 -->
                         <div class="flex-1 divide-y divide-gray-100">
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='答案页面.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">手机银行转账汇款手续费全免吗？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='答案页面.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">什么时候可以打印申购确认书?</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
@@ -233,11 +233,11 @@
                         </div>
                         <!-- 右侧问题列表 -->
                         <div class="flex-1 divide-y divide-gray-100">
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='答案页面.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">赎回资金的到账时间在哪里查询？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='答案页面.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">哪些账户可以申请快易理财？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
@@ -254,11 +254,11 @@
                         </div>
                         <!-- 右侧问题列表 -->
                         <div class="flex-1 divide-y divide-gray-100">
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='理财场景.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">快易理财转账如何办理？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>
-                            <button onclick="showToast('正在加载...')" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
+                            <button onclick="window.location.href='答案页面.html'" class="w-full px-3 py-2.5 text-left text-gray-700 hover:bg-gray-50 transition-colors btn-active flex justify-between items-center gap-2">
                                 <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap" style="font-size: 11px;">转账汇款到账时间？</span>
                                 <i class="fas fa-chevron-right text-gray-400 text-xs flex-shrink-0"></i>
                             </button>

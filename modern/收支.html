@@ -2,44 +2,61 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>收支 - 智能客服</title>
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
-        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
-        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
-        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
-        .content { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); color: var(--color-text-secondary); }
-        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
-        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
-        /* 移动端标准尺寸 */
-        .text-mobile-xs { font-size: 11px; }
-        .text-mobile-sm { font-size: 12px; }
-        .text-mobile-base { font-size: 13px; }
-        .text-mobile-lg { font-size: 14px; }
-            overscroll-behavior-y: contain;
-            -webkit-overflow-scrolling: touch;
-        .text-mobile-xl { font-size: 16px; }
-        .text-mobile-2xl { font-size: 18px; }
-
-        /* 移动端按钮标准高度 */
-        .btn-mobile {
-            height: 40px;
-            line-height: 40px;
-            min-height: 40px;
-        }
+        body { background: var(--color-bg-secondary); min-height: 100vh; padding: 0; }
+        .container { max-width: 375px; margin: 0 auto; background: white; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+        .header h1 { font-size: 18px; font-weight: 600; flex: 1; }
+        .btn-back { color: white; text-decoration: none; display: flex; align-items: center; gap: 4px; font-size: 14px; }
+        .content { padding: 24px; }
+        .info-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 24px; color: white; margin-bottom: 20px; text-align: center; }
+        .info-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .info-desc { font-size: 14px; line-height: 1.6; opacity: 0.95; }
+        .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+        .feature-item { background: #f8f9fa; border-radius: 8px; padding: 16px; text-align: center; }
+        .feature-icon { font-size: 24px; color: #667eea; margin-bottom: 8px; }
+        .feature-text { font-size: 12px; color: #666; }
+        .btn-action { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 16px; }
     </style>
 </head>
 <body>
-    <div class="container animate-fadeIn">
-        <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+    <div class="container">
         <div class="header">
-            <h1 class="title">收支</h1>
+            <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+            <h1>收支</h1>
         </div>
         <div class="content">
-            <p>这是收支页面的内容。该页面正在完善中...</p>
+            <div class="info-card">
+                <div class="info-title"><i class="fas fa-star"></i> 收支</div>
+                <div class="info-desc">收支明细查询 - 清晰掌握资金流向</div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <div class="feature-text">7x24小时服务</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-text">安全可靠</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="feature-text">快速响应</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                    <div class="feature-text">贴心服务</div>
+                </div>
+            </div>
+
+            <button class="btn-action" onclick="window.location.href='modern.html'">
+                <i class="fas fa-home"></i> 返回首页
+            </button>
         </div>
     </div>
 </body>

@@ -2,44 +2,180 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>公告全文 - 智能客服</title>
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: var(--color-bg-secondary); min-height: 100vh; padding: var(--spacing-2xl); }
-        .container { max-width: 1200px; margin: 0 auto; background: var(--color-bg-primary); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: var(--spacing-3xl); }
-        .header { text-align: center; margin-bottom: var(--spacing-3xl); }
-        .title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-sm); }
-        .content { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); color: var(--color-text-secondary); }
-        .btn-back { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--color-bg-secondary); color: var(--color-text-primary); border-radius: var(--radius-md); text-decoration: none; margin-bottom: var(--spacing-2xl); transition: all var(--transition-fast); }
-        .btn-back:hover { background: var(--color-bg-tertiary); transform: translateX(-4px); }
-        /* 移动端标准尺寸 */
-        .text-mobile-xs { font-size: 11px; }
-        .text-mobile-sm { font-size: 12px; }
-        .text-mobile-base { font-size: 13px; }
-        .text-mobile-lg { font-size: 14px; }
-            overscroll-behavior-y: contain;
-            -webkit-overflow-scrolling: touch;
-        .text-mobile-xl { font-size: 16px; }
-        .text-mobile-2xl { font-size: 18px; }
+        body {
+            background: var(--color-bg-secondary);
+            min-height: 100vh;
+            padding: 0;
+        }
 
-        /* 移动端按钮标准高度 */
-        .btn-mobile {
-            height: 40px;
-            line-height: 40px;
-            min-height: 40px;
+        .announcement-full-container {
+            max-width: 375px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .btn-back {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .announcement-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .announcement-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .announcement-body p {
+            margin-bottom: 16px;
+            text-indent: 2em;
+        }
+
+        .announcement-body .no-indent {
+            text-indent: 0;
+        }
+
+        .announcement-body .signature {
+            text-align: right;
+            margin-top: 32px;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 3px solid #667eea;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            text-indent: 0;
+        }
+
+        .conditions-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .conditions-list li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            border-bottom: 1px dashed #e8e8e8;
+        }
+
+        .conditions-list li:last-child {
+            border-bottom: none;
+        }
+
+        .conditions-list li::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="container animate-fadeIn">
-        <a href="javascript:history.back()" class="btn-back"><i class="fas fa-arrow-left"></i> 返回</a>
+    <div class="announcement-full-container">
         <div class="header">
-            <h1 class="title">公告全文</h1>
+            <a href="javascript:history.back()" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                返回
+            </a>
+            <h1>公告详情</h1>
         </div>
+
         <div class="content">
-            <p>这是公告全文页面的内容。该页面正在完善中...</p>
+            <h2 class="announcement-title">关于对长期未使用且余额为零的个人账户进行自动销户的公告</h2>
+
+            <div class="announcement-meta">
+                <span><i class="far fa-clock"></i> 2017-06-06</span>
+                <span><i class="far fa-building"></i> 招商银行</span>
+            </div>
+
+            <div class="announcement-body">
+                <p class="no-indent">尊敬的客户:</p>
+                <p class="no-indent">您好！</p>
+
+                <p>为了向您提供更好的客户服务，保护账户安全，我行拟于2017年7月15日开始，对同时符合下述条件的个人银行账户进行销户处理：</p>
+
+                <div class="highlight-box">
+                    <p><strong>销户条件：</strong></p>
+                </div>
+
+                <ul class="conditions-list">
+                    <li data-num="1.">卡片等级为"一卡通"普通卡（含电子一卡通、财富账户，下同），且持卡人未持有"一卡通"普通卡以上级别的、未销户的借记卡（包括但不限于"一卡通"金卡、金葵花卡、钻石卡、私人银行卡等）、存折、存单</li>
+                    <li data-num="2.">"一卡通"普通卡账户余额为零，且不存在任何未结清利息，同时持卡人两年内（含两年）未使用该卡主动发起任何交易（包括但不限于ATM取款、POS消费等交易）</li>
+                    <li data-num="3.">"一卡通"普通卡未处于挂失、换卡、冻结、预警等状态，未关联Ⅱ类户或"一闪通"</li>
+                    <li data-num="4.">"一卡通"普通卡未关联我行信用卡还款或个贷还款，也未签订代发协议或无有效保险保单</li>
+                    <li data-num="5.">"一卡通"普通卡非我行住房公积金卡、企业年金卡、社保卡</li>
+                    <li data-num="6.">"一卡通"普通卡不存在关户限制</li>
+                    <li data-num="7.">持卡人未持有我行有效的或者未激活的信用卡，且在我行系统中不存在在途的信用卡申请</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>温馨提示：</strong></p>
+                    <p style="margin-top: 8px;">为保障您的用卡权益不受影响，请持有符合上述条件的"一卡通"普通卡的持卡人尽快确认您是否仍需使用该账户。</p>
+                    <p style="margin-top: 8px;">若您希望继续使用该账户，请务必于我行统一发起销户的日期前对卡片进行启用处理（通过我行柜面、手机银行、自助设备等渠道任意办理一笔存取现或转账交易，或者在任意商户发生一笔刷卡消费即可）。</p>
+                </div>
+
+                <p>感谢您的理解与支持！</p>
+
+                <div class="signature">
+                    <p>招商银行股份有限公司</p>
+                    <p>二〇一七年六月六日</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
